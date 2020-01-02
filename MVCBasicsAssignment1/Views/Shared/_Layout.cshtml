@@ -3,15 +3,38 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <header>
-        <img src="~/img/logo.jpg" alt="Gable logo" />
+        <nav class="navbar navbar-expand-lg bg-secondary navbar-light">
+            <a class="navbar-brand" href="#">
+                <img src="~/img/logo.jpg" alt="Flying pig logo" style="width:40px;" class="navbar-brand" />
+            </a>
+
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Index" asp-controller="Home">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Contact" asp-controller="Home">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Projects" asp-controller="Home">Projects</a>
+                </li>
+            </ul>
+        </nav>
+
     </header>
-    <div>
+    <div class="bg-secondary">
         @RenderBody()
     </div>
-    <footer></footer>
+    <footer class="fo">
+        <p>Gable &copy; @DateTime.Now.Year</p>
+    </footer>
 </body>
 </html>
