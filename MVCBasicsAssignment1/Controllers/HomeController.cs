@@ -14,7 +14,7 @@ namespace MVCBasicsAssignment1.Controllers
         }
         public IActionResult About()
         {
-            return View();
+            return View("Index");
         }
         public IActionResult Contact()
         {
