@@ -45,17 +45,17 @@ namespace MVCBasicsAssignment1
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "FeverCheck",              //name to route rule
-                    pattern: "fevercheck", //url to match
-                    defaults: new { controller = "Health", action = "FeverCheck" }  //what controller & action to call
-                    );
+                //endpoints.MapControllerRoute(
+                //    name: "FeverCheck",              //name to route rule
+                //    pattern: "fevercheck", //url to match
+                //    defaults: new { controller = "Health", action = "FeverCheck" }  //what controller & action to call
+                //    );
 
-                endpoints.MapControllerRoute(
-                    name: "NumGuessingGame",              //name to route rule
-                    pattern: "guessinggame", //url to match
-                    defaults: new { controller = "NumGuessingGame", action = "Index" }  //what controller & action to call
-                    );
+                //endpoints.MapControllerRoute(
+                //    name: "NumGuessingGame",              //name to route rule
+                //    pattern: "guessinggame", //url to match
+                //    defaults: new { controller = "NumGuessingGame", action = "Index" }  //what controller & action to call
+                //    );
 
                 // custom/special routes should be added before default
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
