@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Guess the number";
+}
+
+<h1>Enter you temperature</h1>
+<form asp-action="Index" asp-controller="NumGuessingGame" method="post" class="form-group">
+    <label>My guess is</label>
+    <input type="number" name="guess" placeholder="number" />
+    <br />
+    <input id="submitbutton" type="submit" class="btn btn-secondary" value="Check number" />
+
+</form>
+
+
+@if (ViewBag.GuessResult != null)
+{
+    string mess = ViewBag.GuessResult;
+
+    if (mess.Contains("correct"))
+    {
+$(document).ready(changeButtontext();
+    }
+    <h3 class="font: ">
+        @ViewBag.GuessResult
+    </h3>
+}
+<script>
+    function changeButtontext() {
+        var btn = document.getElementById("submitbutton");
+        btn.onclick = ReGet;
+        btn.value = "New number";
+    }
+
+    function ReGet() {
+        var btn = document.getElementById("submitbutton");
+        btn.value = "New number";
+
+        var myform = document.createElement("form");
+        myform.action = "Index";
+        myform.controller = "NumGuessingGame";
+        myform.method = "get";
+        myform.submit()
+
+    }
+
+</script>

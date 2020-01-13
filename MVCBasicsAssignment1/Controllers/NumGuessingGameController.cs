@@ -10,28 +10,41 @@ namespace MVCBasicsAssignment1.Controllers
     public class NumGuessingGameController : Controller
     {
         public const string SessionKey_RightNumber = "_RightNumber";
-        public const string SessionKey_Guesses = "_Guesses";
+        //public const string SessionKey_Guesses = "_Guesses";
 
         [HttpGet]
         public IActionResult Index()
         {
             Random rnd = new Random();
-            int RightNumber = 0;
+            int rightNumber = 0;
             //a loop with 1-6 iterations to make the random number a "bit" more random
             for (int i = 0; i < rnd.Next(1, 7); i++)
             {
-                RightNumber = rnd.Next(1, 101);
+                rightNumber = rnd.Next(1, 101);
             }
-            HttpContext.Session.SetString(SessionKey_RightNumber, RightNumber.ToString());
-
+            HttpContext.Session.SetInt32(SessionKey_RightNumber, rightNumber);
+            ViewBag.GuessResult = rightNumber;
             return View();
         }
         [HttpPost]
-        public IActionResult Index(int Guess)
+        public IActionResult Index(int guess)
         {
-            HttpContext.Session.Get(SessionKey_RightNumber, SessionInfo_RightNumber);
+            int? rightNum = HttpContext.Session.GetInt32(SessionKey_RightNumber);
+            string returnValue;
 
-            HttpContext.Session.SetString(SessionKey_RightNumber, SessionInfo_RightNumber);
+
+            if (guess == rightNum)
+            { returnValue = "Your guess " + guess + " is correct! " + rightNum; }
+            else
+            {
+                if (guess < rightNum)
+                { returnValue = "Your guess " + guess + " is to low. " + rightNum; }
+                else returnValue = "Your guess " + guess + " is to high. " + rightNum;
+            }
+
+            ViewBag.GuessResult = returnValue;
+
+            return View();
         }
     }
 }
