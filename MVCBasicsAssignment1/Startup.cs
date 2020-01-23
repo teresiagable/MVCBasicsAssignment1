@@ -52,7 +52,7 @@ namespace MVCBasicsAssignment1
                     );
 
                 endpoints.MapControllerRoute(
-                    name: "NumGuessingGame",              //name to route rule
+                    name: "GuessingGame",              //name to route rule
                     pattern: "guessinggame", //url to match
                     defaults: new { controller = "NumGuessingGame", action = "Index" }  //what controller & action to call
                     );

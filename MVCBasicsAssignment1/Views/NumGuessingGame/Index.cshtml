@@ -2,12 +2,11 @@
     ViewData["Title"] = "Guess the number";
 }
 
-<h1>Enter you temperature</h1>
+<h1>The Guessing game</h1>
 <form asp-action="Index" asp-controller="NumGuessingGame" method="post" class="form-group">
     <label>My guess is</label>
     <input type="number" name="guess" placeholder="number" />
-    <br />
-    <input id="submitbutton" type="submit" class="btn btn-secondary" value="Check number" />
+    <input id="submitbutton" type="submit" class="btn btn-secondary align-content-end" value="Check number" />
 
 </form>
 
@@ -15,15 +14,29 @@
 @if (ViewBag.GuessResult != null)
 {
     string mess = ViewBag.GuessResult;
+    bool rightAnswer = mess.Contains("correct");
 
-    if (mess.Contains("correct"))
-    {
-$(document).ready(changeButtontext();
-    }
-    <h3 class="font: ">
+    string resultTextStyle = "text-secondary";
+
+    if (rightAnswer) resultTextStyle = "alert-secondary";
+
+
+    <h3 class=@resultTextStyle>
         @ViewBag.GuessResult
     </h3>
+    <div class="align-bottom font-color: bg-secondary"></div>
+
+    if (rightAnswer)
+    {
+        <form asp-controller="NumGuessingGame" asp-action="Index" method="get">
+            <input id="btnRestart" type="submit" class="btn btn-secondary bg-secondary" value="Play again" />
+        </form>
+    }
 }
+@if (ViewBag.SecretNumber != null)
+{<div class="text-light">@ViewBag.SecretNumber</div>}
+
+@*this scripts are not used and probably not working*@
 <script>
     function changeButtontext() {
         var btn = document.getElementById("submitbutton");

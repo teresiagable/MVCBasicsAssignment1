@@ -23,7 +23,7 @@ namespace MVCBasicsAssignment1.Controllers
                 rightNumber = rnd.Next(1, 101);
             }
             HttpContext.Session.SetInt32(SessionKey_RightNumber, rightNumber);
-            ViewBag.GuessResult = rightNumber;
+            ViewBag.SecretNumber = rightNumber.ToString();
             return View();
         }
         [HttpPost]
@@ -38,8 +38,8 @@ namespace MVCBasicsAssignment1.Controllers
             else
             {
                 if (guess < rightNum)
-                { returnValue = "Your guess " + guess + " is to low. " + rightNum; }
-                else returnValue = "Your guess " + guess + " is to high. " + rightNum;
+                { returnValue = "Your guess " + guess + " is to low. "; }
+                else returnValue = "Your guess " + guess + " is to high. ";
             }
 
             ViewBag.GuessResult = returnValue;
